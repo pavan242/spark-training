@@ -8,7 +8,7 @@ object wordcount {
     
     val conf = new SparkConf()
     .setAppName("Word Count")
-    .setMaster("local")
+    .setMaster("local[2]")
     
     val sc = new SparkContext(conf)
     
@@ -26,5 +26,6 @@ object wordcount {
     sorted.collect.foreach(println)
     
     //sorted.collect.saveAsTextFile(args(1))
+    sc.stop()
   }
 }
